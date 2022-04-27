@@ -7,6 +7,10 @@ function toWordsArr(str) {
     )
 }
 
+function toWordsArrUnique(str) {
+    return R.uniq(toWordsArr(str))
+}
+
 function wordArrayToLengths(arr) {
     return R.map(
         R.length,
@@ -23,8 +27,7 @@ function wordCount(str) {
 
 function wordCountUniq(str) {
     return R.pipe(
-        toWordsArr,
-        R.uniq,
+        toWordsArrUnique,
         R.length
     )(str)
 }
@@ -53,8 +56,7 @@ function wordLengthSumArray(str) {
 
 function wordLengthUniqueSumArray(str) {
     return R.pipe(
-        toWordsArr,
-        R.uniq,
+        toWordsArrUnique,
         wordArrayToLengths,
         R.sum,
     )(str)
